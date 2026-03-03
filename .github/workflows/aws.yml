@@ -5,15 +5,14 @@ on:
     branches: [ "main" ]
 
 env:
-  AWS_REGION: eu-west-3                 set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: kamilakare/mlops           set this to your Amazon ECR repository name
-  ECS_SERVICE: mlops_service                 set this to your Amazon ECS service name
-  ECS_CLUSTER: MlopsCluster                 set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: mlops_catboost set this to the path to your Amazon ECS task definition
-                                               file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: mlops_catboost           set this to the name of the container in the
-                                               containerDefinitions section of your task definition
-                     containerDefinitions section of your task definition
+  AWS_REGION: eu-west-3                 #set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: bernardmlops          # set this to your Amazon ECR repository name
+  ECS_SERVICE: mlops_service                # set this to your Amazon ECS service name
+  ECS_CLUSTER: MlopsCluster                 # set this to your Amazon ECS cluster name
+  ECS_TASK_DEFINITION: mlops_catboost #set this to the path to your Amazon ECS task definition file, e.g. .aws/task-definition.json
+  CONTAINER_NAME: mlops_catboost           #set this to the name of the container in the
+                                              # containerDefinitions section of your task definition
+                     #containerDefinitions section of your task definition
 
 permissions:
   contents: read
@@ -35,7 +34,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-3
 
-    - name: Login to Amazon ECR
+    - name: Login to Amazon ECRawsdocker build -t bernardmlops .
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
